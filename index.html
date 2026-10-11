@@ -295,51 +295,45 @@ const SCENES = [
   id:"crossroads", stage:0, art:"🎓", title:"Graduation Is Coming",
   text:`<p>It's fall of your second year. You have <b>$60K in savings</b>, two job offers, and one slightly unhinged idea. Like most of your classmates, you've been nudged toward the "safe" paths.</p>`,
   ask:"What do you do after graduation?",
-  L:["OPT.1","BTB.1","PAY.3"],
+  L:["OPT.1"],
   choices:[
-    {t:"Accept the $190K offer at Prestige & Partners Consulting", sub:"Safe, prestigious, and your parents can explain it at parties.", tag:"ok",
+    {t:"Accept the $190K offer at Prestige & Partners Consulting", sub:"$190K base, top-tier training, and a network you can use for life.", tag:"ok",
      fx:{cash:25,life:-15},
-     res:`Fourteen months later it's 1:40 AM and you're on slide 87 of a deck about "leveraging synergies." You planned for the next 2–3 years, not for the life you want at 45. You quit to search for a business. (You got here in the end.)`,
-     L:["OPT.5"]},
-    {t:"Search for a small business to buy and run", sub:"Entrepreneurship Through Acquisition. Skip the startup idea and buy a company that already works.", tag:"best",
+     res:`Fourteen months later it's 1:40 AM and you're on slide 87 of a deck about "leveraging synergies." You planned for the next 2–3 years, not for the life you want at 45. You quit to search for a business. (You got here in the end.)`, L:["OPT.5","PAY.3"]},
+    {t:"Search for a small business to buy and run", sub:"Spend up to two years looking for a company to buy, on a modest salary, with no guarantee you'll find one.", tag:"best",
      fx:{life:5},
-     res:`Bold move. Your parents ask whether "searching" is a real job. It is, and you don't even need a startup idea.`,
-     L:["F10.2"]},
-    {t:"Take the private equity associate role", sub:"Ownership-adjacent! You'll model other people's ownership.", tag:"ok",
+     res:`Bold move. Your parents ask whether "searching" is a real job. It is, and you don't even need a startup idea.`, L:["F10.2","BTB.1"]},
+    {t:"Take the private equity associate role", sub:"$200K+, learn deal-making from the inside, and sit at the table when companies get bought.", tag:"ok",
      fx:{cash:20,life:-10},
-     res:`Great training, brutal hours, and you're growing someone else's balance sheet. After two years of LBO models you decide to run one for yourself.`,
-     L:["OPT.2"]}
+     res:`Great training, brutal hours, and you're growing someone else's balance sheet. After two years of LBO models you decide to run one for yourself.`, L:["OPT.2"]}
   ]
 },
 {
   id:"optimize", stage:0, art:"🧭", title:"What Are You Optimizing For?",
   text:`<p>During office hours, your favorite professor, <b>Prof. Whitaker</b>, slides a notecard across the desk. It has one question: <b>"What are you optimizing for?"</b> Underneath, he's written: <i>"Describe your life at age 45."</i></p>`,
   ask:"What do you write?",
-  L:["OPT.5","OPT.4","OPT.2"],
+  L:["OPT.4"],
   choices:[
-    {t:"A prestigious brand on my résumé for the next 2–3 years", tag:"bad", fx:{life:-5},
-     res:`That's a fine answer for age 29. You leave the "age 45" line blank. Prof. Whitaker taps it twice and says nothing, which somehow feels worse.`},
-    {t:"Ownership, flexibility, and being home for dinner with my partner and future kids", tag:"best", fx:{life:10},
+    {t:"Learning as much as possible in my first few years, so I have options later", tag:"bad", fx:{life:-5},
+     res:`Sensible for age 29, but it only covers the next few years. You leave the "age 45" line blank. Prof. Whitaker taps it twice and says nothing, which somehow feels worse.`, L:["OPT.5"]},
+    {t:"What my day-to-day life looks like at 45, including time with family", tag:"best", fx:{life:10},
      res:`You write "own something" and "never miss a soccer game." Prof. Whitaker smiles and says, "Now we can talk about buying a business."`},
-    {t:"The highest starting salary. I'll save my way to wealth.", tag:"bad", fx:{cash:5},
-     res:`A $200K salary minus big-city rent, taxes and brunch leaves less than you'd think. Saving a paycheck alone rarely builds real wealth.`,
-     L:["OPT.2"]}
+    {t:"Earning and saving as much as I can, so I'm financially secure", tag:"bad", fx:{cash:5},
+     res:`A $200K salary minus big-city rent, taxes and brunch leaves less than you'd think. Saving a paycheck alone rarely builds real wealth.`, L:["OPT.2"]}
   ]
 },
 {
   id:"why", stage:0, art:"🤔", title:"The Roommate Interrogation",
   text:`<p>Your roommate, who just signed with an investment bank, looks at you like you've joined a cult. "Why would you give up a guaranteed salary?"</p>`,
   ask:"What's your honest answer?",
-  L:["PAY.4","PAY.5","PAY.1"],
+  L:["PAY.5"],
   choices:[
-    {t:`"Because owners make WAY more money than consultants."`, tag:"bad", fx:{life:-5},
-     res:`Your roommate opens Excel. Once you discount for risk, the present value of the two paths comes out about the same. Money alone is a shaky reason to do this.`},
-    {t:`"I want to set my own hours, make my own calls, and be proud of something I own."`, tag:"best", fx:{life:10},
-     res:`That's the right reason. Your roommate quietly searches "how to buy a car wash" later that night.`,
-     L:["PAY.2"]},
-    {t:`"Honestly? Banking sounds miserable and I'd have zero control."`, tag:"ok", fx:{},
-     res:`Fair, and your roommate's 100-hour weeks will prove you right. But "escaping" isn't the same as choosing something you'll thrive in.`,
-     L:["PAY.3"]}
+    {t:`"The financial upside of owning a business is much bigger."`, tag:"bad", fx:{life:-5},
+     res:`Your roommate opens Excel. Once you discount for risk, the present value of the two paths comes out about the same. Money alone is a shaky reason to do this.`, L:["PAY.4"]},
+    {t:`"I think I'd thrive with the autonomy of running my own company."`, tag:"best", fx:{life:10},
+     res:`That's the right reason. Your roommate quietly searches "how to buy a car wash" later that night.`, L:["PAY.2"]},
+    {t:`"I'd rather avoid the hours and pressure of banking or consulting."`, tag:"ok", fx:{},
+     res:`Fair, and your roommate's 100-hour weeks will prove you right. But "escaping" isn't the same as choosing something you'll thrive in.`, L:["PAY.3","PAY.1"]}
   ]
 },
 {
@@ -348,55 +342,51 @@ const SCENES = [
   ask:"Where do you go?",
   L:["OPT.3"],
   choices:[
-    {t:"New York. That's where the action is.", tag:"bad", fx:{cash:-10,life:-10},
+    {t:"New York. It has the most investors, brokers and deal flow.", tag:"bad", fx:{cash:-10,life:-10},
      res:`Your studio costs $4,200 a month and overlooks an air shaft. Your partner turns down the residency and now paints in a closet. They are not thrilled.`},
-    {t:"St. Louis. Affordable, flexible, near family, and full of businesses to buy.", tag:"best", fx:{cash:5,life:10},
+    {t:"St. Louis. Lower costs, more flexibility, and your partner's new job.", tag:"best", fx:{cash:5,life:10},
      res:`Your rent is half of New York's, your partner has a sunlit studio, and you can see three family-owned businesses from your porch.`},
-    {t:"Wherever my career takes me. My partner will figure it out.", tag:"bad", fx:{life:-15},
-     res:`Your partner hears you say this and paints a very dramatic portrait of you. It is not flattering.`,
-     L:["OPT.4"]}
+    {t:"Stay flexible and decide once I see where the best deal turns up", tag:"bad", fx:{life:-15},
+     res:`Your partner hears "we'll see" for the third time and paints a very dramatic portrait of you. It is not flattering.`, L:["OPT.4"]}
   ]
 },
 {
   id:"ready", stage:0, art:"😬", title:"Am I Even Qualified?",
   text:`<p>Impostor syndrome hits at 2 AM. You've never run a company, and everyone on the ETA podcasts sounds like they were born in a boardroom. The next morning you confess this to Prof. Whitaker.</p>`,
   ask:"What do you tell yourself?",
-  L:["TWO.1"],
   choices:[
-    {t:"Spend 5–10 more years in corporate first, just to be safe", tag:"bad", fx:{life:-5},
-     res:`Waiting a decade is optional. Searchers come from all kinds of backgrounds, and plenty start right after the MBA.`},
-    {t:"Start now. What matters is how I prepare from here.", tag:"best", fx:{inv:5},
+    {t:"Get 3–5 years of operating experience first, then search", tag:"bad", fx:{life:-5}, L:["TWO.1"],
+     res:`Experience helps, but waiting years is optional. Searchers come from all kinds of backgrounds, and plenty start right after the MBA.`},
+    {t:"Start preparing now, while I'm still in school", tag:"best", fx:{inv:5}, L:["TWO.1"],
      res:`Prof. Whitaker agrees: "You don't need a 20-year résumé. You need a plan for your last year of school."`},
-    {t:"Get a PhD in small business first", tag:"bad", fx:{life:-5},
-     res:`Six more years of school later, your dream seller has already retired to Florida without you.`}
+    {t:"Find an experienced operator to partner with, and let them lead", tag:"ok", fx:{inv:-5},
+     res:`Co-searching can work, but investors want to back <i>you</i>. You don't need someone else's résumé to get started.`}
   ]
 },
 {
   id:"school", stage:0, art:"🎒", title:"Your Final Year of School",
   text:`<p>You have two semesters left and only so many hours in the week.</p>`,
   ask:"Where do you put your energy?",
-  L:["TWO.2","TWO.3","TWO.4"],
   choices:[
-    {t:"Grind for a perfect GPA", tag:"ok", fx:{life:-5},
-     res:`Your transcript is flawless. No seller, broker or investor ever asks to see it.`},
-    {t:"Take the ETA class, go to search fund conferences, lead the ETA club, and attend every info session", tag:"best", fx:{inv:10},
-     res:`Prof. Whitaker brings you to a search fund conference, where you meet three searchers and a lender. Running the club gives you a reason to email every alum who ever bought a business.`},
-    {t:"Coast. It's second year, after all.", tag:"bad", fx:{life:5,inv:-5},
-     res:`Fun year. But when you start fundraising, the classmates who went to conferences already know all the investors.`}
+    {t:"Focus on grades and the core finance classes", tag:"ok", fx:{life:-5},
+     res:`Your transcript is flawless. No seller, broker or investor ever asks to see it.`, L:["TWO.3"]},
+    {t:"Take the ETA class, go to search fund conferences, join the ETA club, and go to info sessions", tag:"best", fx:{inv:10},
+     res:`Prof. Whitaker brings you to a search fund conference, where you meet three searchers and a lender. Running the club gives you a reason to email every alum who ever bought a business.`, L:["TWO.2","TWO.4"]},
+    {t:"Spend the year recruiting for a strong backup job offer", tag:"ok", fx:{cash:5,inv:-5},
+     res:`A smart hedge. But when you start fundraising, the classmates who went to conferences already know all the investors.`, L:["TWO.4"]}
   ]
 },
 {
   id:"summer", stage:0, art:"🛠️", title:"The Last Résumé Line",
   text:`<p>Before you start searching, you have one more stint to fill. Prof. Whitaker warns you that investors will look closely at what you've actually <i>done</i>.</p>`,
   ask:"Which role do you take?",
-  L:["TWO.5"],
   choices:[
-    {t:"Another consulting internship", tag:"ok", fx:{cash:10},
+    {t:"A brand-name consulting internship", tag:"ok", fx:{cash:10},
      res:`Good pay and polished slides. But you've still never read a P&L that wasn't in a case study.`},
-    {t:"Operations and finance at a 60-person HVAC company", tag:"best", fx:{inv:10},
+    {t:"Operations and finance at a 60-person HVAC company", tag:"best", fx:{inv:10}, L:["TWO.5"],
      res:`You build their first 13-week cash forecast and learn how a technician schedule really works. Investors love this line on your résumé.`},
-    {t:"Backpack through Southeast Asia", tag:"ok", fx:{life:10},
-     res:`It's a life-changing trip with zero business skills. When investors ask what you did, you show them a photo of an elephant.`}
+    {t:"A startup internship, building a new product from scratch", tag:"ok", fx:{life:5},
+     res:`Fast-paced and fun, but ETA is about running a business that already exists. You still haven't managed a P&L or a field team.`}
   ]
 },
 // ===== Stage 2: Fund the Search =====
@@ -404,41 +394,35 @@ const SCENES = [
   id:"structure", stage:1, art:"🏗️", title:"How Will You Fund the Search?",
   text:`<p>Searching takes time and money, and a search fund's journey from start to exit typically runs <b>over eight years</b>. There are five main ways to fund it.</p>`,
   ask:"Pick your search structure:",
-  L:["F10.1","F10.3"],
-  cover:["STR.1","STR.2","STR.3","STR.4","STR.5"],
+  L:["F10.1"],
   choices:[
     {t:"Traditional search fund", sub:"Investors pay your salary for a 2–3 year search. You earn equity at acquisition, with room for bigger deals and lots of advisors.", tag:"best",
      fx:{inv:15}, set:s=>{s.own=.25;s.structure="Traditional"},
-     res:`You raise about $450K from 12 investors who will cover your salary during the search.`,
-     L:["STR.1"]},
+     res:`You raise about $450K from 12 investors who will cover your salary during the search.`, L:["STR.1","F10.3"]},
     {t:"Self-funded search", sub:"Use your own savings and keep much more equity. It's the riskiest model, with the least support.", tag:"best",
      fx:{cash:-40,life:-10,inv:-5}, set:s=>{s.own=.60;s.structure="Self-funded"},
-     res:`You live on ramen and burn through your savings, but you'll own far more of the company when you buy.`,
-     L:["STR.2"]},
+     res:`You live on ramen and burn through your savings, but you'll own far more of the company when you buy.`, L:["STR.2"]},
     {t:"Accelerator model", sub:"A sponsor trains you, provides equity for the deal, and advises the business afterward.", tag:"best",
      fx:{inv:10}, set:s=>{s.own=.20;s.structure="Accelerator"},
-     res:`You join a cohort with weekly training. Your equity slice is smaller, but you have backup on speed dial.`,
-     L:["STR.3"]},
+     res:`You join a cohort with weekly training. Your equity slice is smaller, but you have backup on speed dial.`, L:["STR.3"]},
     {t:"Holding company", sub:"Buy several businesses under one umbrella and hold them for the long term.", tag:"best",
      fx:{months:2}, set:s=>{s.own=.35;s.structure="Holding company"},
-     res:`Ambitious. You plan to buy several companies and hold them for decades. Setting up the structure costs you a couple of months.`,
-     L:["STR.4"]},
+     res:`Ambitious. You plan to buy several companies and hold them for decades. Setting up the structure costs you a couple of months.`, L:["STR.4"]},
     {t:"Single sponsor", sub:"One backer funds everything. It's simpler, with more flexibility on approach and timing.", tag:"best",
      fx:{inv:5}, set:s=>{s.own=.30;s.structure="Single sponsor"},
-     res:`A family office backs your whole search. You only have one person to update, and the timeline is flexible.`,
-     L:["STR.5"]}
+     res:`A family office backs your whole search. You only have one person to update, and the timeline is flexible.`, L:["STR.5"]}
   ]
 },
 {
   id:"terms", stage:1, art:"📝", title:"The Term Sheet Pop Quiz",
   text:s=>`<p>${s.structure==="Self-funded"?"Even self-funded searchers raise equity for the acquisition itself. ":""}Your lead investor, Priya, slides over standard terms: a <b>10% preferred return</b>, <b>return of capital</b> before any profit split, and a <b>1.5x step-up</b>.</p><p>She sips her oat latte. "Quick check. If investors put up 40% of the purchase price, how much of the company do we own?"</p>`,
   ask:"Your answer:",
-  L:["TER.3","TER.5"],
+  L:["TER.3"],
   choices:[
     {t:"40%", tag:"bad", fx:{inv:-10},
      res:`Priya raises an eyebrow. "You forgot the step-up." Investors own their share of the price <i>times</i> the step-up, so 40% × 1.5 = 60%.`},
     {t:"60%", tag:"best", fx:{inv:12},
-     res:`Correct. 40% × 1.5 = 60%. Priya nods. "Most people miss that."`},
+     res:`Correct. 40% × 1.5 = 60%. Priya nods. "Most people miss that."`, L:["TER.5"]},
     {t:"26.7%", tag:"bad", fx:{inv:-10},
      res:`You divided instead of multiplying. The step-up <i>increases</i> what investors own: 40% × 1.5 = 60%.`}
   ]
@@ -447,28 +431,27 @@ const SCENES = [
   id:"waterfall", stage:1, art:"💧", title:"Who Gets Paid First?",
   text:`<p>Priya has one more question. "Say we sell the company someday. Walk me through who gets paid, and in what order."</p>`,
   ask:"Your answer:",
-  L:["TER.1","TER.2"],
+  L:["TER.2"],
   choices:[
-    {t:"Everyone splits every dollar by ownership from day one", tag:"bad", fx:{inv:-10},
-     res:`Not quite. Investors get paid before any split.`},
+    {t:"Everyone splits every dollar by ownership percentage", tag:"bad", fx:{inv:-10},
+     res:`Not quite. Investors get paid before any split.`, L:["TER.1"]},
     {t:"Investors' 10% preferred return first, then their capital back, then we split the rest", tag:"best", fx:{inv:10},
      res:`Exactly. Priya writes "knows the waterfall" in her notes. It's also why your salary stays modest: everyone wants the big money to come from distributions.`},
-    {t:"The searcher first, to make up for all the salary I gave up", tag:"bad", fx:{inv:-15},
-     res:`Priya laughs. Then she realizes you're serious.`}
+    {t:"Investors get their capital back first, then we split the rest by ownership", tag:"bad", fx:{inv:-5},
+     res:`Close, but you forgot the 10% preferred return. It accrues every year and gets paid <i>before</i> their capital comes back.`, L:["TER.1"]}
   ]
 },
 {
   id:"raise", stage:1, art:"💸", title:"Rent Went Up",
   text:`<p>Six months into the search, your landlord raises the rent by $400 a month. You control the search fund's bank account, and it's tempting.</p>`,
   ask:"What do you do?",
-  L:["TER.4"],
   choices:[
-    {t:"Give yourself a raise. It's basically your company.", tag:"bad", fx:{inv:-20,cash:5,months:6},
+    {t:"Give yourself a small cost-of-living raise. It's a reasonable expense.", tag:"bad", fx:{inv:-20,cash:5,months:6}, L:["TER.4"],
      res:`Priya spots it on the bank statement and is not pleased. Raising your own salary needs investor approval.`},
-    {t:"Ask investors for approval and explain why", tag:"best", fx:{inv:8,months:6},
+    {t:"Ask investors to approve the raise first", tag:"best", fx:{inv:8,months:6}, L:["TER.4"],
      res:`They approve a small cost-of-living bump and appreciate being asked.`},
-    {t:`Expense a "market research trip" to Cabo`, tag:"bad", fx:{inv:-25,life:10,months:6},
-     res:`The tan is great. The investor update call is not.`}
+    {t:"Cover the gap from your own savings and don't bother investors", tag:"ok", fx:{cash:-10,life:-5,months:6},
+     res:`Investors never find out, but your savings shrink and you're stressed. Asking would have been fine. That's what investor approvals are for.`}
   ]
 },
 // ===== Stage 3: Build a Thesis =====
@@ -478,42 +461,40 @@ const SCENES = [
   ask:"Your ideal target:",
   L:["HBR.1"],
   choices:[
-    {t:"A SaaS startup growing 80% a year (not yet profitable)", tag:"bad", fx:{inv:-10},
-     res:`The broker laughs. "That's venture capital." A business that burns cash can't carry acquisition debt.`},
-    {t:"An established, enduringly profitable business with recurring, loyal customers, growing slowly", tag:"best", fx:{inv:10}, set:s=>{s.goodProfile=true},
+    {t:"A software company growing 80% a year that just reached break-even", tag:"bad", fx:{inv:-10},
+     res:`The broker shrugs. "That's a venture deal." With barely any profit, it can't carry acquisition debt.`},
+    {t:"A 25-year-old commercial cleaning company growing 3% a year, with multi-year contracts", tag:"best", fx:{inv:10}, set:s=>{s.goodProfile=true},
      res:`"Boring" is beautiful. Loyal, recurring customers mean cash flow is unlikely to crater, and there's still room to grow.`},
-    {t:"A beloved restaurant where the owner is also the star chef", tag:"bad", fx:{inv:-5},
-     res:`When the chef retires, the secret sauce retires too. Diners aren't recurring contracts.`},
-    {t:"A fast-casual franchise with 4% margins", tag:"bad", fx:{inv:-5},
-     res:`One bad month and those thin margins disappear. That's not enduringly profitable.`}
+    {t:"A popular restaurant group with three locations and great reviews", tag:"bad", fx:{inv:-5},
+     res:`Great reviews, but the owner-chef <i>is</i> the brand, and diners aren't recurring contracts.`},
+    {t:"An e-commerce brand that made $1M in profit last year after going viral", tag:"bad", fx:{inv:-5},
+     res:`One great year from a viral moment isn't enduring profit, and customers who buy once aren't recurring.`}
   ]
 },
 {
   id:"thesis", stage:2, art:"🗺️", title:"Where and What?",
   text:`<p>Your investors want your search thesis on one page by Friday.</p>`,
   ask:"Your thesis:",
-  L:["F10.4","BTB.2"],
   choices:[
-    {t:"St. Louis, where I have a network and can add value. Open to any industry with strong SDE and sticky customers.", tag:"best", fx:{inv:10},
-     res:`Smart. Your network means warm intros, and being industry-agnostic keeps your deal funnel wide.`},
-    {t:"Only AI companies in San Francisco", tag:"bad", fx:{inv:-10,cash:-10,life:-5},
-     res:`Every target sells at 30x, and you have no connections or edge there.`},
-    {t:"Only HVAC. Someone on LinkedIn said it's the best.", tag:"ok", fx:{},
-     res:`HVAC can be great, but limiting yourself to one industry on day one shrinks your deal flow a lot. (It makes more sense if you're planning a platform strategy.)`}
+    {t:"St. Louis, where I have a network. Open to any industry with strong SDE and sticky customers.", tag:"best", fx:{inv:10},
+     res:`Smart. Your network means warm intros, and being industry-agnostic keeps your deal funnel wide.`, L:["F10.4"]},
+    {t:"San Francisco, focused on tech-enabled services companies", tag:"bad", fx:{inv:-10,cash:-10,life:-5},
+     res:`Prices are sky-high, and you have no connections or edge there.`, L:["F10.4"]},
+    {t:"Nationwide, but only HVAC companies", tag:"ok", fx:{},
+     res:`HVAC can be great, but limiting yourself to one industry on day one shrinks your deal flow a lot. (It makes more sense if you're planning a platform strategy.)`, L:["BTB.2"]}
   ]
 },
 {
   id:"tailwind", stage:2, art:"🌬️", title:"Find the Tailwind",
   text:`<p>Your shortlist has three industries. Priya asks, "Which one has the wind at its back?"</p>`,
   ask:"Your pick:",
-  L:["PRI.2"],
   choices:[
-    {t:"Fax-machine repair. Businesses are really cheap!", tag:"bad", fx:{inv:-10},
+    {t:"Commercial print shops, which sell at low multiples", tag:"bad", fx:{inv:-10}, L:["PRI.2"],
      res:`They're cheap for a reason. The market shrinks every year, so you'd be fighting a headwind.`},
-    {t:"Home services in a region with aging houses and fast-growing suburbs", tag:"best", fx:{inv:10}, set:s=>{s.tail=true},
+    {t:"Home services in a region with aging houses and fast-growing suburbs", tag:"best", fx:{inv:10}, L:["PRI.2"], set:s=>{s.tail=true},
      res:`Older homes need more upkeep, and new suburbs add customers every year. Demand grows on its own.`},
-    {t:"Mall-based retail. Malls are due for a comeback.", tag:"bad", fx:{inv:-10},
-     res:`They are not.`}
+    {t:"Specialty retail stores with loyal local followings", tag:"bad", fx:{inv:-10},
+     res:`Loyal fans help, but foot traffic keeps shifting online. You'd be swimming against the current.`}
   ]
 },
 // ===== Stage 4: Sourcing =====
@@ -521,28 +502,26 @@ const SCENES = [
   id:"sourcing", stage:3, art:"📬", title:"Finding Deals",
   text:`<p>You need deal flow, and lots of it. Most businesses you look at won't work out.</p>`,
   ask:"Main sourcing strategy:",
-  L:["BTB.5","PRI.1","PRI.4"],
   choices:[
-    {t:"Mail-merge 5,000 cold emails with a template", tag:"bad", fx:{months:5,life:-10}, set:s=>{s.cold=true},
-     res:`3% open rate. One reply says "unsubscribe" and another says "who is this." Owners get dozens of these every week.`},
-    {t:"Get upstream with brokers. Meet them, get vetted, and be crisp about your criteria.", tag:"best", fx:{months:3,inv:5},
-     res:`Brokers learn you're a real buyer who can close. Now they call you <i>before</i> deals go public, instead of after the PE firms pass.`},
-    {t:"Warm intros through local CPAs, estate attorneys and industry associations", tag:"best", fx:{months:3,life:5},
-     res:`A CPA who has known her clients for 20 years starts making introductions. These owners trust her, so they take your call.`}
+    {t:"Send personalized cold emails to 500 owners a month", tag:"bad", fx:{months:5,life:-10}, set:s=>{s.cold=true},
+     res:`Personalized or not, you get a 3% open rate. One reply says "unsubscribe" and another says "who is this." Owners get dozens of these every week.`, L:["PRI.1"]},
+    {t:"Meet brokers in person, get vetted, and be specific about your criteria", tag:"best", fx:{months:3,inv:5},
+     res:`Brokers learn you're a real buyer who can close. Now they call you <i>before</i> deals go public, instead of after the PE firms pass.`, L:["BTB.5","PRI.4"]},
+    {t:"Ask local CPAs, estate attorneys and industry associations for introductions", tag:"best", fx:{months:3,life:5},
+     res:`A CPA who has known her clients for 20 years starts making introductions. These owners trust her, so they take your call.`, L:["PRI.1"]}
   ]
 },
 {
   id:"doubt", stage:3, art:"😰", title:"The Doubt Creeps In",
-  text:s=>`<p>Month ${s.months+3}. You've looked at 140 businesses and have zero deals. A guy at your gym offers to sell you his car wash: no financials, "cash business, if you know what I mean." That same week, your old consulting firm calls about a job. You call Prof. Whitaker for advice.</p>`,
+  text:s=>`<p>Month ${s.months+3}. You've looked at 140 businesses and have zero deals. A guy at your gym offers to sell you his car wash. Most revenue is cash, and he says his books are "mostly up to date." That same week, your old consulting firm calls about a job. You call Prof. Whitaker for advice.</p>`,
   ask:"What do you do?",
-  L:["PRI.3","F10.5"],
   choices:[
-    {t:"Buy the car wash. Any deal beats no deal!", tag:"bad", fx:{inv:-20,months:3},
-     res:`Your investors use their right to say no. A bad acquisition would have followed you for years.`},
-    {t:"Stay disciplined. No deal is better than a bad deal.", tag:"best", fx:{inv:5,months:3},
-     res:`It's painful, but you go back to your pipeline. Even if you never buy, you're building skills you'll keep.`},
-    {t:"Take the consulting job and quit searching", tag:"ok", fx:{life:5,inv:-10,months:3},
-     res:`You draft the email telling investors you're quitting. Then a broker calls, and you hit delete.`}
+    {t:"Make an offer on the car wash. You can verify the numbers in diligence.", tag:"bad", fx:{inv:-20,months:3},
+     res:`Your investors use their right to say no. A bad acquisition would have followed you for years.`, L:["PRI.3"]},
+    {t:"Pass on the car wash and keep searching", tag:"best", fx:{inv:5,months:3},
+     res:`It's painful, but you go back to your pipeline. Even if you never buy, you're building skills you'll keep.`, L:["PRI.3"]},
+    {t:"Take the consulting job and keep searching on nights and weekends", tag:"ok", fx:{life:-5,inv:-10,months:3},
+     res:`You draft the email to investors. Then a broker calls, you realize part-time searching won't cut it, and you hit delete.`, L:["F10.5"]}
   ]
 },
 {
@@ -551,12 +530,12 @@ const SCENES = [
   ask:"Do you keep sourcing other deals?",
   L:["HBR.2"],
   choices:[
-    {t:"No. Stop everything. This is THE one.", tag:"bad", fx:{months:2,life:5}, set:s=>{s.backup=false},
+    {t:"Pause other deals to give this one your full attention", tag:"bad", fx:{months:2,life:5}, set:s=>{s.backup=false},
      res:`You cancel all your other calls. It feels great, but nothing is signed.`},
-    {t:"Yes. Keep adding new prospects every day while you pursue it.", tag:"best", fx:{months:2,inv:5}, set:s=>{s.backup=true},
+    {t:"Keep adding new prospects every day while you pursue it", tag:"best", fx:{months:2,inv:5}, set:s=>{s.backup=true},
      res:`You keep two backup deals warm. It's tiring, but it's insurance.`},
-    {t:"Celebrate with a week in Napa", tag:"ok", fx:{months:2,life:10,cash:-5}, set:s=>{s.backup=false},
-     res:`The wine was lovely. Meanwhile your pipeline went cold.`}
+    {t:"Stay in touch with your two best backup deals, but stop adding new ones", tag:"ok", fx:{months:2,life:5}, set:s=>{s.backup=false},
+     res:`Better than nothing, but within a month both backups sell to other buyers and your pipeline is empty.`}
   ]
 },
 // ===== Stage 5: Meet the Seller =====
@@ -566,12 +545,12 @@ const SCENES = [
   ask:"What's your first real question?",
   L:["HBR.5"],
   choices:[
-    {t:`"So, what's the lowest price you'd take?"`, tag:"bad", fx:{trust:-20,months:1},
-     res:`Gary puts down his fork. "We just met, kid." The rest of the meeting is very short.`},
+    {t:`"Do you have a price in mind?"`, tag:"bad", fx:{trust:-20,months:1},
+     res:`Gary puts down his fork. "We just met, kid." Talking price first makes this feel like a transaction, and the meeting ends early.`},
     {t:`"What's making you think about selling now?"`, tag:"best", fx:{trust:20,months:1},
      res:`"My knees are shot, my grandkids live in Tampa, and my son wants to be a DJ." It's a clean, believable reason with no hidden lawsuit or dying industry behind it. You can feel this deal can actually close.`},
-    {t:`"Can you email me your last 5 years of tax returns tonight?"`, tag:"bad", fx:{trust:-10,months:1},
-     res:`Gary has never sent an email with an attachment. He also now thinks you're from the IRS.`}
+    {t:`"Could you send me the last three years of financials?"`, tag:"bad", fx:{trust:-10,months:1},
+     res:`A fair ask, but it's too soon. Gary has never sent an email attachment, and now he thinks you're from the IRS.`}
   ]
 },
 {
@@ -580,27 +559,26 @@ const SCENES = [
   ask:"How do you size up recurring revenue?",
   L:["HBR.3"],
   choices:[
-    {t:"Assume none of it is recurring and walk away", tag:"bad", fx:{inv:-5,months:1}, set:s=>{s.rec="low"},
+    {t:"Treat it all as non-recurring, to be conservative", tag:"bad", fx:{inv:-5,months:1}, set:s=>{s.rec="low"},
      res:`Too conservative. You nearly walk away from a great business, until Prof. Whitaker talks you back into it.`},
     {t:"Infer it from customer type, reputation and competition", tag:"best", fx:{inv:10,months:1}, set:s=>{s.rec="right"},
-     res:`Most residential customers are on quarterly plans. Commercial kitchens are <i>required</i> by health code to have regular pest control, which works a lot like the Chilean labor law in the Vitamina case. Reviews average 4.8★ and the local competitors are weaker. You estimate about 80% recurring, which is excellent.`,
-     L:["VIT.1"]},
-    {t:"Assume it's 100% recurring. Bugs are forever!", tag:"bad", fx:{months:1}, set:s=>{s.rec="high"},
-     res:`Bugs are forever, but customers aren't. You've anchored on a fantasy number and you'll want to overpay.`}
+     res:`Most residential customers are on quarterly plans. Commercial kitchens are <i>required</i> by health code to have regular pest control, which works a lot like the Chilean labor law in the Vitamina case. Reviews average 4.8★ and the local competitors are weaker. You estimate about 80% recurring, which is excellent.`, L:["VIT.1"]},
+    {t:"Ask Gary to estimate it and use his number", tag:"bad", fx:{months:1}, set:s=>{s.rec="high"},
+     res:`Gary proudly says "basically all of it." He's not lying, he's just optimistic. You've anchored on a number that's too high, and you'll want to overpay.`}
   ]
 },
 // ===== Stage 6: The LOI =====
 {
   id:"loi", stage:5, art:"✍️", title:"Write the LOI",
-  text:s=>`<p>Time for the Letter of Intent. Bugs B. Gone makes <b>$1.0M in SDE</b>. You and your investors set your walk-away maximum at <b>4.5x ($4.5M)</b>.${s.rec==="high"?" (Your 100%-recurring fantasy makes you want to go higher.)":""}</p>`,
+  text:s=>`<p>Time for the Letter of Intent. Bugs B. Gone makes <b>$1.0M in SDE</b>. You and your investors set your walk-away maximum at <b>4.5x ($4.5M)</b>.${s.rec==="high"?" (Gary's “basically all of it” estimate makes you want to go higher.)":""}</p>`,
   ask:"What do you bid?",
   L:["HBR.4"],
   choices:[
-    {t:"Open at 4.5x. Show respect with my best number on day one!", tag:"bad", fx:{trust:10,inv:-10,months:1}, set:s=>{s.mult=4.5+(s.rec==="high"?.3:0)},
+    {t:"Offer 4.5x, so Gary knows you're serious and you beat other buyers", tag:"bad", fx:{trust:10,inv:-10,months:1}, set:s=>{s.mult=4.5+(s.rec==="high"?.3:0)},
      res:s=>`Gary accepts in 11 seconds, which should worry you. You've left no room to negotiate if diligence turns anything up. Final price: <b>${(s.mult).toFixed(1)}x</b>.`},
-    {t:"Offer a fair 3.8x with a seller note and a 6-month transition, leaving room to adjust", tag:"best", fx:{trust:10,inv:10,months:1}, set:s=>{s.mult=4.0+(s.rec==="high"?.3:0)},
+    {t:"Offer 3.8x, with a seller note and a 6-month transition", tag:"best", fx:{trust:10,inv:10,months:1}, set:s=>{s.mult=4.0+(s.rec==="high"?.3:0)},
      res:s=>`Gary counters, you meet in the middle at <b>${(s.mult).toFixed(1)}x</b>, and he likes that the seller note keeps him invested in your success.`},
-    {t:"Lowball at 2.5x. Everything is negotiable, baby.", tag:"bad", fx:{trust:-45,months:1}, set:s=>{s.lowball=true},
+    {t:"Offer 3.0x to anchor low. You can always come up.", tag:"bad", fx:{trust:-45,months:1}, set:s=>{s.lowball=true},
      res:`Gary reads the LOI, says a word that is not appropriate for a family pest control company, and stops returning your calls.`}
   ]
 },
@@ -622,14 +600,14 @@ const SCENES = [
   id:"capital", stage:5, art:"🏦", title:"Build the Capital Stack",
   text:s=>`<p>The purchase price is <b>$${(s.mult).toFixed(1)}M</b>. Think of it like buying a house: you put money down (<b>equity</b>) and borrow the rest (<b>debt</b>). Buying a company this way is a <b>leveraged buyout</b>.</p>`,
   ask:"How do you finance it?",
-  L:["LBO.1","LBO.2","LBO.3","LBO.4"],
+  L:["LBO.3"],
   choices:[
-    {t:"90% debt. Max leverage, max returns!", tag:"bad", fx:{inv:-5,life:-10}, set:s=>{s.debt=.9},
-     res:`Your banker sweats a little. If the business has one bad year, those loan payments could sink you.`},
-    {t:"Balanced: about 60% bank loan + 10% seller note + 30% investor equity", tag:"best", fx:{inv:10}, set:s=>{s.debt=.7},
-     res:`The lender is comfortable, Gary's seller note keeps him invested, and the business can easily cover its loan payments.`},
-    {t:"100% equity. Debt is scary.", tag:"ok", fx:{inv:-10,life:5}, set:s=>{s.debt=0},
-     res:`It's very safe, but investors now need to put in more than three times as much capital, and their returns shrink a lot. That isn't really a leveraged buyout.`}
+    {t:"About 90% debt, to maximize the return on equity", tag:"bad", fx:{inv:-5,life:-10}, set:s=>{s.debt=.9},
+     res:`Your banker sweats a little. If the business has one bad year, those loan payments could sink you.`, L:["LBO.1"]},
+    {t:"About 60% bank loan, 10% seller note and 30% investor equity", tag:"best", fx:{inv:10}, set:s=>{s.debt=.7},
+     res:`The lender is comfortable, Gary's seller note keeps him invested, and the business can easily cover its loan payments.`, L:["LBO.4","LBO.2"]},
+    {t:"All equity, so the business carries no debt at all", tag:"ok", fx:{inv:-10,life:5}, set:s=>{s.debt=0},
+     res:`It's very safe, but investors now need to put in more than three times as much capital, and their returns shrink a lot. That isn't really a leveraged buyout.`, L:["LBO.1"]}
   ]
 },
 // ===== Stage 7: Due Diligence =====
@@ -637,14 +615,13 @@ const SCENES = [
   id:"dd", stage:6, art:"🔍", title:"Due Diligence",
   text:`<p>The LOI is signed. You have about 90 days to learn <i>everything</i> before you close, and until then you're only risking your escrow and professional fees.</p>`,
   ask:"How do you run diligence?",
-  L:["BTB.3","PRI.5"],
   choices:[
-    {t:"Send Gary a 400-item PE request list on day one", tag:"bad", fx:{trust:-25,months:3,life:-5}, set:s=>{s.dd="heavy";s.ops-=1},
-     res:`Gary spends three weeks digging through shoeboxes instead of running his company. Revenue dips, two technicians hear rumors and quit, and Gary starts wondering about other buyers.`},
-    {t:"Tell Gary what you're trying to learn, work from what he already has, and bring in an accountant and an industry operator from your network", tag:"best", fx:{trust:10,inv:10,months:3}, set:s=>{s.dd="smart";s.mult=Math.max(3.5,s.mult-.2)},
-     res:`Your accountant finds that one grocery chain is <b>18% of revenue</b>, and its contract renews in 4 months. You negotiate a <b>$200K price reduction</b> and meet the customer with Gary. The relationship is solid.`},
-    {t:"Skip it. The vibes are immaculate.", tag:"bad", fx:{trust:5,months:1}, set:s=>{s.dd="none";s.ops-=1},
-     res:`You close fast. Very fast. There may be a cockroach in a closet you didn't check.`}
+    {t:"Send Gary a comprehensive 400-item diligence request list right away", tag:"bad", fx:{trust:-25,months:3,life:-5}, set:s=>{s.dd="heavy";s.ops-=1},
+     res:`Gary spends three weeks digging through shoeboxes instead of running his company. Revenue dips, two technicians hear rumors and quit, and Gary starts wondering about other buyers.`, L:["PRI.5"]},
+    {t:"Explain what you need to learn, start from what Gary already has, and bring in an accountant and an industry operator", tag:"best", fx:{trust:10,inv:10,months:3}, set:s=>{s.dd="smart";s.mult=Math.max(3.5,s.mult-.2)},
+     res:`Your accountant finds that one grocery chain is <b>18% of revenue</b>, and its contract renews in 4 months. You negotiate a <b>$200K price reduction</b> and meet the customer with Gary. The relationship is solid.`, L:["BTB.3","PRI.5"]},
+    {t:"Keep diligence light so you can close before another buyer shows up", tag:"bad", fx:{trust:5,months:1}, set:s=>{s.dd="none";s.ops-=1},
+     res:`You close fast. Very fast. There may be a cockroach in a closet you didn't check.`, L:["BTB.3"]}
   ]
 },
 // ===== Stage 8: Day 1 as CEO =====
@@ -655,11 +632,11 @@ const SCENES = [
   L:["BTB.4"],
   enter:s=>{ if(s.months>24) s.inv-=10; },
   choices:[
-    {t:"Keep Gary as co-CEO for 3 more years", tag:"bad", fx:{trust:10,life:-5},
+    {t:"Keep Gary on as co-CEO for 3 years so nothing breaks", tag:"bad", fx:{trust:10,life:-5},
      res:`The technicians don't know who the boss is, so they keep calling Gary. You're mostly a very expensive intern.`},
-    {t:"A defined 3–6 month transition to learn everything he knows, then he heads to Tampa", tag:"best", fx:{trust:5}, set:s=>{s.ops+=1},
+    {t:"A defined 3–6 month transition, then he steps away", tag:"best", fx:{trust:5}, set:s=>{s.ops+=1},
      res:`Gary introduces you to every key customer and teaches you which basements have raccoons. Then he heads to Tampa with a seller note and a smile.`},
-    {t:"Gary leaves the day you close, with no handoff", tag:"bad", fx:{trust:-10}, set:s=>{s.ops-=1},
+    {t:"Let Gary retire at closing, so the team sees you're in charge", tag:"bad", fx:{trust:-10}, set:s=>{s.ops-=1},
      res:`Thirty years of customer relationships drive off in Gary's Buick. Two commercial accounts call asking "who are you?"`}
   ]
 },
@@ -668,55 +645,52 @@ const SCENES = [
   text:`<p>22 technicians are staring at you. Most of them have worked here longer than you've been an adult.</p>`,
   ask:"Your first move:",
   choices:[
-    {t:`Send a company-wide email announcing "exciting synergy initiatives"`, tag:"bad", fx:{life:-5}, set:s=>{s.ops-=1},
-     res:`Nobody reads it. The group chat roasts you, and someone prints it out to use as a dartboard.`, L:["BTB.4"]},
-    {t:"Ride along on routes, learn the work, and become their go-to person", tag:"best", fx:{life:5}, set:s=>{s.ops+=1},
+    {t:"Send an email introducing yourself and your 100-day plan", tag:"bad", fx:{life:-5}, set:s=>{s.ops-=1},
+     res:`Technicians are in trucks all day, and nobody reads it. The group chat roasts you, and someone prints it out to use as a dartboard.`, L:["BTB.4"]},
+    {t:"Ride along on routes and learn the work firsthand", tag:"best", fx:{life:5}, set:s=>{s.ops+=1},
      res:`You get bitten by something in a crawl space on day two. The team now respects you deeply.`, L:["BTB.4"]},
-    {t:"Lay off 20% of staff to boost EBITDA immediately", tag:"bad", fx:{life:-10}, set:s=>{s.ops-=1},
-     res:`EBITDA jumps for one quarter. Then service quality tanks, customers cancel, and your best techs leave for a competitor.`, L:["BTB.4"]}
+    {t:"Find quick cost savings to show investors early results", tag:"bad", fx:{life:-10}, set:s=>{s.ops-=1},
+     res:`You cut overtime and delay truck repairs. EBITDA jumps for one quarter, then service quality tanks, customers cancel, and your best techs leave for a competitor.`, L:["BTB.4"]}
   ]
 },
 {
   id:"turnover", stage:7, art:"🔄", title:"The Turnover Problem",
   text:`<p>Technician turnover is <b>60% a year</b>. Every building needs a custom treatment plan, so the work can't be standardized. Each new hire takes 4 months to train and certify, and customers notice when a new face shows up every quarter.</p>`,
   ask:"What do you do?",
-  L:["VIT.2","SCO.2"],
+  L:["VIT.2"],
   choices:[
-    {t:"It's fine. Starbucks has 150% turnover and they're doing great.", tag:"bad", fx:{}, set:s=>{s.ops-=1},
-     res:`Starbucks can do that because barista training is short. Your technicians handle chemicals and need certification, so a revolving door won't work.`},
-    {t:"Build a career ladder with certifications, raises and job security, and track quality with data", tag:"best", fx:{life:5}, set:s=>{s.ops+=1},
-     res:`You add pay steps for each certification and track callbacks and route audits for every technician. Turnover drops to 18%, and customer complaints fall by half.`,
-     L:["VIT.4","VIT.3","SCO.3"]},
-    {t:"Hire cheaper, less experienced technicians to save money", tag:"bad", fx:{}, set:s=>{s.ops-=1},
-     res:`A rookie sprays the wrong product in a restaurant kitchen. You spend a week apologizing, and the health inspector now knows your name.`,
-     L:["SCO.3"]}
+    {t:"Accept it. High turnover is normal in field services.", tag:"bad", fx:{}, set:s=>{s.ops-=1},
+     res:`It's normal for jobs with short training, like Starbucks baristas. Your technicians handle chemicals and need certification, so a revolving door won't work.`},
+    {t:"Build a career ladder with certification-based raises, and track quality data", tag:"best", fx:{life:5}, set:s=>{s.ops+=1},
+     res:`You add pay steps for each certification and track callbacks and route audits for every technician. Turnover drops to 18%, and customer complaints fall by half.`, L:["VIT.4","VIT.3","SCO.3"]},
+    {t:"Hire faster, with a lower starting wage to offset training costs", tag:"bad", fx:{}, set:s=>{s.ops-=1},
+     res:`A rookie sprays the wrong product in a restaurant kitchen. You spend a week apologizing, and the health inspector now knows your name.`, L:["SCO.2"]}
   ]
 },
 {
   id:"moat", stage:7, art:"🔒", title:"The RoachLock Patent",
   text:`<p>Back in 2004, Gary patented a bait station called the <b>RoachLock</b>. A competitor just launched a near-copy. Priya asks, "So what's our <i>real</i> moat?"</p>`,
   ask:"Your strategy:",
-  L:["SCO.1","SCO.4"],
   choices:[
-    {t:"The patent! Sue everyone.", tag:"bad", fx:{cash:-10}, set:s=>{s.ops-=1},
-     res:`Legal fees eat a quarter's profit, and the patent expires in two years anyway.`},
-    {t:"Go premium: the best technicians and materials, no cut corners, for customers like hospitals and food plants that need it done right", tag:"best", fx:{inv:5}, set:s=>{s.ops+=1},
-     res:`The patent gave you a head start, and now quality is the moat. Hospitals and food plants pay more, and your operations and customers reinforce each other.`},
-    {t:"Forget positioning. Compete on price.", tag:"bad", fx:{}, set:s=>{s.ops-=1},
-     res:`Now you're the cheapest pest control in town, and also the least profitable.`}
+    {t:"Enforce the patent in court to protect your advantage", tag:"bad", fx:{cash:-10}, set:s=>{s.ops-=1},
+     res:`Legal fees eat a quarter's profit, and the patent expires in two years anyway.`, L:["SCO.1"]},
+    {t:"Go premium: the best technicians and materials, aimed at hospitals and food plants", tag:"best", fx:{inv:5}, set:s=>{s.ops+=1},
+     res:`The patent gave you a head start, and now quality is the moat. Hospitals and food plants pay more, and your operations and customers reinforce each other.`, L:["SCO.4","SCO.1"]},
+    {t:"Lower prices so customers have no reason to switch", tag:"bad", fx:{}, set:s=>{s.ops-=1},
+     res:`Now you're the cheapest pest control in town, and also the least profitable.`, L:["SCO.4"]}
   ]
 },
 {
   id:"growth", stage:7, art:"📈", title:"Time to Grow",
   text:`<p>Things are stable. Now you need growth, so the company is worth more when you sell than when you bought it.</p>`,
   ask:"Growth plan:",
-  L:["SCO.5","VIT.5","LBO.5"],
+  L:["LBO.5"],
   choices:[
-    {t:"Hold monthly huddles where techs and sales share what customers ask for, then add termite and mosquito plans", tag:"best", fx:{life:5}, set:s=>{s.ops+=1},
-     res:`The techs say customers keep asking about mosquitoes. You launch a seasonal plan, it sells out, and quality stays the value every decision is built around.`},
-    {t:"Expand into 6 unrelated services: gutters, dog grooming, and DJ services for Gary's son", tag:"bad", fx:{life:-10}, set:s=>{s.ops-=1},
-     res:`DJ Pruitt Jr. is booked solid, but nothing else works. Your technicians are confused and your brand is a mess.`},
-    {t:"Slash prices 30% to steal market share", tag:"bad", fx:{}, set:s=>{s.ops-=1},
+    {t:"Hold monthly huddles where techs and sales share what customers are asking for", tag:"best", fx:{life:5}, set:s=>{s.ops+=1},
+     res:`The techs say customers keep asking about mosquitoes and termites. You launch seasonal plans, they sell out, and quality stays the value every decision is built around.`, L:["SCO.5","VIT.5"]},
+    {t:"Expand into adjacent services like lawn care, gutters and pressure washing", tag:"bad", fx:{life:-10}, set:s=>{s.ops-=1},
+     res:`New equipment, new hires, new licenses. Your techs are stretched thin and your brand gets fuzzy. (Gary's son offers DJ services too. You decline.)`, L:["VIT.5"]},
+    {t:"Run a 30%-off promotion to win new customers", tag:"bad", fx:{}, set:s=>{s.ops-=1},
      res:`You win customers who only care about price and lose margin on everyone else. Competitors match you, and now nobody makes money.`}
   ]
 }
@@ -768,7 +742,7 @@ function howToPlay(){
     </div>
     <h3 class="howh">How you win</h3>
     <p class="story">Choices carry forward. Your bid, your debt and how you run the company decide what Bugs B. Gone sells for in Year 7, and how much of that <b>you</b> walk away with.</p>
-    <p class="story"><b>Score = payout ($K) + life balance × 10 + best moves × 25 + takeaways × 10.</b> Post your score to the high scores at the end.</p>
+    <p class="story"><b>Score = payout ($K) + life balance × 10 + best moves × 25 + takeaways × 10.</b> Can you become a Search Fund Superstar?</p>
     <div class="next-row"><button class="btn" id="go">Let's go →</button></div>
   </div>
   <p class="hint">Press Enter to start</p>`;
@@ -794,6 +768,7 @@ function hud(stage){
 }
 
 // ---------- Scene flow ----------
+function shuffled(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
 function next(i){
   while(i<SCENES.length && SCENES[i].when && !SCENES[i].when(S)) i++;
   if(i>=SCENES.length) return results();
@@ -806,7 +781,7 @@ function next(i){
     <h2>${sc.title}</h2>
     <div class="story">${val(sc.text)}</div>
     <div class="ask">${sc.ask}</div>
-    <div class="choices">${sc.choices.map((c,j)=>`<button class="choice" data-j="${j}"><span class="key">${j+1}</span><span class="lbl">${c.t}${c.sub?`<span class="sub">${c.sub}</span>`:""}</span></button>`).join("")}</div>
+    <div class="choices">${shuffled(sc.choices.map((c,j)=>[c,j])).map(([c,j],pos)=>`<button class="choice" data-j="${j}" data-pos="${pos}"><span class="key">${pos+1}</span><span class="lbl">${c.t}${c.sub?`<span class="sub">${c.sub}</span>`:""}</span></button>`).join("")}</div>
   </div>
   <p class="hint">Tip: press 1–${sc.choices.length} to choose</p>`;
   app.querySelectorAll(".choice").forEach(b=>b.onclick=()=>choose(i,+b.dataset.j));
@@ -858,9 +833,11 @@ function exitMath(){
   const price=S.mult*1000;                      // $K (SDE $1.0M)
   const equityIn=price*(1-S.debt);
   const debtIn=price*S.debt;
-  const growth=clamp(1+.1*S.ops+(S.goodProfile?.05:0)+(S.tail?.1:0)-(S.dd==="none"?.15:0),.6,1.7);
+  const star=S.ops>=4&&S.goodProfile&&S.tail&&S.rec==="right"&&S.dd==="smart"&&S.debt===.7&&!S.lowball;
+  let growth=clamp(1+.1*S.ops+(S.goodProfile?.05:0)+(S.tail?.1:0)-(S.dd==="none"?.15:0),.6,1.7);
+  let exitMult=4.5+(S.rec==="right"?.5:0)+(S.ops>=3?.5:0)-(S.ops<0?.5:0);
+  if(star){ growth=S.ops>=5?2.6:2.4; exitMult=S.ops>=5?7.5:7.0; }
   const exitEbitda=1000*growth;
-  const exitMult=4.5+(S.rec==="right"?.5:0)+(S.ops>=3?.5:0)-(S.ops<0?.5:0);
   const ev=exitEbitda*exitMult;
   const remDebt=debtIn*(S.debt>=.9?.4:S.debt>0?.15:0);
   const bust=S.debt>=.9&&S.ops<=1;
@@ -870,10 +847,11 @@ function exitMath(){
   const investorsOut=equityOut-searcher;
   const moic=equityIn>0?investorsOut/equityIn:0;
   const irr=moic>0?Math.pow(moic,1/7)-1:-1;
-  return {price,equityIn,debtIn,growth,exitEbitda,exitMult,ev,remDebt,bust,equityOut,pref,searcher,investorsOut,moic,irr};
+  return {star,price,equityIn,debtIn,growth,exitEbitda,exitMult,ev,remDebt,bust,equityOut,pref,searcher,investorsOut,moic,irr};
 }
 function ending(x){
   if(x.bust) return ["🪳","The Cockroach Always Wins","With 90% debt and shaky operations, one slow winter meant missed loan payments. The bank took the keys."];
+  if(x.star) return ["🌟","Search Fund Superstar","You nailed it. A private equity firm buys Bugs B. Gone as a platform for a regional roll-up and pays a premium multiple. Your investors' returns land in the top tier of search funds, and Prof. Whitaker asks you to guest-lecture."];
   if(x.searcher>=3000) return ["👑","Pest Control Tycoon","Your investors are framing your quarterly letters. Gary sends a postcard from Tampa."];
   if(x.searcher>=1500) return ["🏆","Successful Searcher","A strong exit. Investors are happy, the team is thriving, and you're getting calls about your next deal."];
   if(x.searcher>=700) return ["👍","Respectable Exit","You made money and learned a ton. A few choices left value on the table."];
@@ -904,7 +882,7 @@ function results(){
         <tr><td>Purchase price<span class="note">${S.mult.toFixed(1)}x SDE of $1.0M</span></td><td>${money(x.price)}</td></tr>
         <tr><td>Financed with<span class="note">Debt is the mortgage, equity is the down payment</span></td><td>${Math.round(S.debt*100)}% debt / ${Math.round((1-S.debt)*100)}% equity</td></tr>
         <tr><td>Year-7 EBITDA<span class="note">Grew from $1.0M thanks to your operating choices</span></td><td>${money(x.exitEbitda)}</td></tr>
-        <tr><td>Sale price<span class="note">${x.exitMult.toFixed(1)}x exit multiple${S.rec==="right"?" (bonus for proven recurring revenue)":""}</span></td><td>${money(x.ev)}</td></tr>
+        <tr><td>Sale price<span class="note">${x.exitMult.toFixed(1)}x exit multiple${x.star?" (premium: a PE firm buys it as a platform)":S.rec==="right"?" (bonus for proven recurring revenue)":""}</span></td><td>${money(x.ev)}</td></tr>
         <tr><td>Remaining debt paid off</td><td>−${money(x.remDebt)}</td></tr>
         <tr><td>Investors first get capital back + 10% preferred return<span class="note">$${Math.round(x.equityIn)}K invested, compounding for 7 years</span></td><td>−${money(Math.min(x.pref,x.equityOut))}</td></tr>
         <tr><td>Your share of what's left<span class="note">${Math.round(S.own*100)}% · ${S.structure} structure</span></td><td>× ${Math.round(S.own*100)}%</td></tr>
@@ -924,14 +902,6 @@ function results(){
       <p class="lb-note">Life balance counts because, as the readings say, the best career optimizes for your partner, family and personal life, not just money.</p>
     </div>
     <div class="section">
-      <h3>🏆 High scores</h3>
-      <div class="submit-row" id="submitRow">
-        <input id="name" maxlength="24" placeholder="Your name (or a fun searcher alias)" autocomplete="off">
-        <button class="btn" id="submit">Post score</button>
-      </div>
-      <div id="lb" style="margin-top:14px"></div>
-    </div>
-    <div class="section">
       <h3>📚 Your study guide</h3>
       <p class="lb-note" style="margin-top:0">All ${ALL_KEYS.length} takeaways from the readings. ✓ = you collected it this run.</p>
       ${studyGuide()}
@@ -945,9 +915,6 @@ function results(){
   countUp(document.getElementById("payout"),payoutK);
   document.getElementById("again").onclick=()=>{S=fresh();next(0)};
   document.getElementById("home").onclick=titleScreen;
-  document.getElementById("submit").onclick=submitScore;
-  document.getElementById("name").onkeydown=e=>{ if(e.key==="Enter"){e.stopPropagation();submitScore();} };
-  loadBoard();
 }
 function countUp(el,target){
   const t0=performance.now(),dur=1200;
@@ -958,44 +925,16 @@ function studyGuide(){
   return Object.keys(T).map(r=>{
     const got=T[r].filter((_,i)=>S.lessons.includes(`${r}.${i+1}`)).length;
     return `<details class="reading"${got<5?" open":""}><summary>${R[r]} <span class="lb-note">(${got}/5)</span></summary><ul class="tk">${T[r].map((t,i)=>{const has=S.lessons.includes(`${r}.${i+1}`);return `<li class="${has?"got":"miss"}"><span>${has?"✓":"○"}</span>${t}</li>`}).join("")}</ul></details>`;
-  }).join("")+`<p class="lb-note">You collected ${S.lessons.length} of ${ALL_KEYS.length} takeaways. Play again with different choices to find the rest.</p>`;
+  }).join("")+`<p class="lb-note">${S.lessons.length===ALL_KEYS.length?`You found all ${ALL_KEYS.length} takeaways! 🎉`:`You collected ${S.lessons.length} of ${ALL_KEYS.length} takeaways. Play again with different choices to find the other ${ALL_KEYS.length-S.lessons.length}.`}</p>`;
 }
-// ---------- Leaderboard ----------
-const LS_KEY="searcher-leaderboard-v1";
-let myId=null;
-function lsGet(){ try{return JSON.parse(localStorage.getItem(LS_KEY))||[]}catch(e){return []} }
-function lsSet(v){ try{localStorage.setItem(LS_KEY,JSON.stringify(v))}catch(e){} }
-async function fetchBoard(){ return lsGet().sort((a,b)=>b.score-a.score).slice(0,20); }
-async function postScore(row){ const all=lsGet(); row.id=Date.now(); all.push(row); lsSet(all); return row.id; }
-async function loadBoard(){
-  const el=document.getElementById("lb"); if(!el) return;
-  el.innerHTML=`<p class="lb-note">Loading leaderboard…</p>`;
-  try{
-    const rows=await fetchBoard();
-    el.innerHTML=rows.length?`<table class="lb"><tr><th>#</th><th>Searcher</th><th>Ending</th><th class="num">Payout</th><th class="num">Score</th></tr>${rows.map((r,i)=>`<tr class="${r.id===myId?"me":""}"><td>${i+1}</td><td>${esc(r.name)}</td><td class="end">${esc(r.ending||"")}</td><td class="num">${money(r.payout||0)}</td><td class="num">${(r.score||0).toLocaleString()}</td></tr>`).join("")}</table>`:`<p class="lb-note">No scores yet. Be the first!</p>`;
-    el.innerHTML+=`<p class="lb-note">High scores saved on this device</p>`;
-  }catch(e){ el.innerHTML=`<p class="lb-note">Couldn't load the leaderboard right now.</p>`; }
-}
-async function submitScore(){
-  const input=document.getElementById("name"), name=input.value.trim().slice(0,24);
-  if(!name){ input.focus(); input.placeholder="Type a name first 🙂"; return; }
-  const btn=document.getElementById("submit"); btn.disabled=true; btn.textContent="Posting…";
-  try{
-    myId=await postScore({name,score:S.final.score,payout:S.final.payoutK,ending:S.final.ending});
-    document.getElementById("submitRow").innerHTML=`<p class="lb-note" style="margin:0">✓ Posted as <b>${esc(name)}</b></p>`;
-    loadBoard();
-  }catch(e){ btn.disabled=false; btn.textContent="Try again"; }
-}
-
 // ---------- Keyboard ----------
 document.addEventListener("keydown",e=>{
-  if(e.target.tagName==="INPUT") return;
   const go=document.getElementById("go");
   if(go && e.key==="Enter"){ e.preventDefault(); go.click(); return; }
   const cont=document.getElementById("cont");
   if(cont && e.key==="Enter"){ e.preventDefault(); cont.click(); return; }
   const n=parseInt(e.key,10);
-  if(n){ const b=app.querySelector(`.choice[data-j="${n-1}"]`); if(b) b.click(); }
+  if(n){ const b=app.querySelector(`.choice[data-pos="${n-1}"]`); if(b) b.click(); }
 });
 
 titleScreen();
