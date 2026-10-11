@@ -253,14 +253,14 @@ const STAGES = ["The Crossroads","Fund the Search","Build a Thesis","Sourcing","
 const CHARS = {
   searcher:{name:"You",img:"img/searcher.png"},
   roommate:{name:"Your Roommate",img:"img/roommate.png"},
-  advisor:{name:"Career Advisor",emoji:"🧑‍🏫"},
+  mentor:{name:"Prof. Whitaker · Your Mentor",emoji:"👨‍🏫"},
   partner:{name:"Your Partner",img:"img/partner.png"},
   priya:{name:"Priya · Lead Investor",img:"img/investor.png"},
   broker:{name:"The Broker",img:"img/broker.png"},
   gary:{name:"Gary Pruitt · Seller",img:"img/gary.png"},
   team:{name:"Dale · Lead Technician",img:"img/technician.png"}
 };
-const WHO = {optimize:"advisor",why:"roommate",where:"partner",terms:"priya",waterfall:"priya",raise:"priya",profile:"broker",thesis:"priya",tailwind:"priya",moat:"priya",sourcing:"broker",found:"broker",gary:"gary",recurring:"gary",loi:"gary",fallout:"gary",dd:"gary","gary-role":"gary",day1:"team",turnover:"team",growth:"team"};
+const WHO = {optimize:"mentor",ready:"mentor",school:"mentor",summer:"mentor",doubt:"mentor",why:"roommate",where:"partner",terms:"priya",waterfall:"priya",raise:"priya",profile:"broker",thesis:"priya",tailwind:"priya",moat:"priya",sourcing:"broker",found:"broker",gary:"gary",recurring:"gary",loi:"gary",fallout:"gary",dd:"gary","gary-role":"gary",day1:"team",turnover:"team",growth:"team"};
 function sprite(key,cls=""){
   const c=CHARS[key];
   return c.img?`<img class="sprite ${cls}" src="${c.img}" alt="${c.name}">`:`<div class="prop ${cls}" aria-hidden="true">${c.emoji}</div>`;
@@ -302,14 +302,14 @@ const SCENES = [
 },
 {
   id:"optimize", stage:0, art:"🧭", title:"What Are You Optimizing For?",
-  text:`<p>The career center hands you a worksheet with one question at the top: <b>"What are you optimizing for?"</b> There's a second line underneath: <i>"Describe your life at age 45."</i></p>`,
+  text:`<p>During office hours, your favorite professor, <b>Prof. Whitaker</b>, slides a notecard across the desk. It has one question: <b>"What are you optimizing for?"</b> Underneath, he's written: <i>"Describe your life at age 45."</i></p>`,
   ask:"What do you write?",
   L:["OPT.5","OPT.4","OPT.2"],
   choices:[
     {t:"A prestigious brand on my résumé for the next 2–3 years", tag:"bad", fx:{life:-5},
-     res:`That's a fine answer for age 29. You leave the "age 45" line blank, which says a lot.`},
+     res:`That's a fine answer for age 29. You leave the "age 45" line blank. Prof. Whitaker taps it twice and says nothing, which somehow feels worse.`},
     {t:"Ownership, flexibility, and being home for dinner with my partner and future kids", tag:"best", fx:{life:10},
-     res:`You write "own something" and "never miss a soccer game." The career advisor nods slowly and closes the consulting brochure.`},
+     res:`You write "own something" and "never miss a soccer game." Prof. Whitaker smiles and says, "Now we can talk about buying a business."`},
     {t:"The highest starting salary. I'll save my way to wealth.", tag:"bad", fx:{cash:5},
      res:`A $200K salary minus big-city rent, taxes and brunch leaves less than you'd think. Saving a paycheck alone rarely builds real wealth.`,
      L:["OPT.2"]}
@@ -348,14 +348,14 @@ const SCENES = [
 },
 {
   id:"ready", stage:0, art:"😬", title:"Am I Even Qualified?",
-  text:`<p>Impostor syndrome hits at 2 AM. You've never run a company, and everyone on the ETA podcasts sounds like they were born in a boardroom.</p>`,
+  text:`<p>Impostor syndrome hits at 2 AM. You've never run a company, and everyone on the ETA podcasts sounds like they were born in a boardroom. The next morning you confess this to Prof. Whitaker.</p>`,
   ask:"What do you tell yourself?",
   L:["TWO.1"],
   choices:[
     {t:"Spend 5–10 more years in corporate first, just to be safe", tag:"bad", fx:{life:-5},
      res:`Waiting a decade is optional. Searchers come from all kinds of backgrounds, and plenty start right after the MBA.`},
     {t:"Start now. What matters is how I prepare from here.", tag:"best", fx:{inv:5},
-     res:`Right. You don't need a 20-year résumé. You need a plan for your last year of school.`},
+     res:`Prof. Whitaker agrees: "You don't need a 20-year résumé. You need a plan for your last year of school."`},
     {t:"Get a PhD in small business first", tag:"bad", fx:{life:-5},
      res:`Six more years of school later, your dream seller has already retired to Florida without you.`}
   ]
@@ -369,14 +369,14 @@ const SCENES = [
     {t:"Grind for a perfect GPA", tag:"ok", fx:{life:-5},
      res:`Your transcript is flawless. No seller, broker or investor ever asks to see it.`},
     {t:"Take the ETA class, go to search fund conferences, lead the ETA club, and attend every info session", tag:"best", fx:{inv:10},
-     res:`At one conference you meet three searchers and a lender, and one of them becomes your mentor. Running the club gives you a reason to email every alum who ever bought a business.`},
+     res:`Prof. Whitaker brings you to a search fund conference, where you meet three searchers and a lender. Running the club gives you a reason to email every alum who ever bought a business.`},
     {t:"Coast. It's second year, after all.", tag:"bad", fx:{life:5,inv:-5},
      res:`Fun year. But when you start fundraising, the classmates who went to conferences already know all the investors.`}
   ]
 },
 {
   id:"summer", stage:0, art:"🛠️", title:"The Last Résumé Line",
-  text:`<p>Before you start searching, you have one more stint to fill. Investors will look closely at what you've actually <i>done</i>.</p>`,
+  text:`<p>Before you start searching, you have one more stint to fill. Prof. Whitaker warns you that investors will look closely at what you've actually <i>done</i>.</p>`,
   ask:"Which role do you take?",
   L:["TWO.5"],
   choices:[
@@ -522,7 +522,7 @@ const SCENES = [
 },
 {
   id:"doubt", stage:3, art:"😰", title:"The Doubt Creeps In",
-  text:s=>`<p>Month ${s.months+3}. You've looked at 140 businesses and have zero deals. A guy at your gym offers to sell you his car wash: no financials, "cash business, if you know what I mean." That same week, your old consulting firm calls about a job.</p>`,
+  text:s=>`<p>Month ${s.months+3}. You've looked at 140 businesses and have zero deals. A guy at your gym offers to sell you his car wash: no financials, "cash business, if you know what I mean." That same week, your old consulting firm calls about a job. You call Prof. Whitaker for advice.</p>`,
   ask:"What do you do?",
   L:["PRI.3","F10.5"],
   choices:[
@@ -570,7 +570,7 @@ const SCENES = [
   L:["HBR.3"],
   choices:[
     {t:"Assume none of it is recurring and walk away", tag:"bad", fx:{inv:-5,months:1}, set:s=>{s.rec="low"},
-     res:`Too conservative. You nearly walk away from a great business, until your mentor talks you back into it.`},
+     res:`Too conservative. You nearly walk away from a great business, until Prof. Whitaker talks you back into it.`},
     {t:"Infer it from customer type, reputation and competition", tag:"best", fx:{inv:10,months:1}, set:s=>{s.rec="right"},
      res:`Most residential customers are on quarterly plans. Commercial kitchens are <i>required</i> by health code to have regular pest control, which works a lot like the Chilean labor law in the Vitamina case. Reviews average 4.8★ and the local competitors are weaker. You estimate about 80% recurring, which is excellent.`,
      L:["VIT.1"]},
